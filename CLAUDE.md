@@ -19,8 +19,9 @@ eventually-consistent/
 │
 ├── .claude/               # Claude Code configuration (gitignored)
 │   ├── commands/
-│   │   ├── commit.md      # /commit slash command
-│   │   └── release.md     # /release slash command
+│   │   ├── commit.md      # /commit — conventional commit
+│   │   ├── push.md        # /push — push to both remotes
+│   │   └── release.md     # /release — GitFlow release workflow
 │   ├── hooks/
 │   │   └── protect-sensitive.sh  # Security hook
 │   └── settings.json      # Plugins and hook config
@@ -68,6 +69,44 @@ eventually-consistent/
     │   └── images/                 # Theme images
     │
     └── docs/              # Theme design docs
+```
+
+## Git Workflow
+
+### Branching Model (GitFlow)
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Production — only updated via release merges |
+| `develop` | Active development — default branch, all work targets here |
+
+- **Never commit directly to `main`** — it only receives fast-forward merges from `develop` during releases
+- Feature work happens on `develop` (or feature branches merged into `develop`)
+- CI/CD deploys `develop` → dev Ghost, `main` → prod Ghost
+
+### Dual Remotes
+
+| Remote | Platform | Purpose |
+|--------|----------|---------|
+| `origin` | GitLab (self-hosted) | Primary — has CI/CD pipeline |
+| `github` | GitHub (public) | Mirror/showcase |
+
+Always push to both remotes to keep them in sync.
+
+### Slash Commands
+
+| Command | What it does |
+|---------|-------------|
+| `/commit` | Analyze changes, generate conventional commit message, commit locally |
+| `/push` | Push current branch to both `origin` and `github` |
+| `/release` | Full GitFlow release: merge develop→main, tag, push, create GitHub release |
+
+Typical workflow:
+```
+# 1. Make changes on develop
+# 2. /commit          → commit locally
+# 3. /push            → push develop to both remotes (triggers dev deployment)
+# 4. /release         → when ready for production release
 ```
 
 ## Build Process
@@ -233,7 +272,9 @@ The CI/CD pipeline handles this automatically.
 ## Rules
 
 - **NO AI attribution** in commits - Do not include "Generated with Claude Code", "Co-Authored-By: Claude", or any AI-related attribution in commit messages, PR descriptions, or code comments.
-- **NO automatic git commits or pushes** - Do not run `git commit` or `git push` unless explicitly requested by the user or invoked via `/commit` or `/release` commands.
+- **NO automatic git commits or pushes** - Do not run `git commit` or `git push` unless explicitly requested by the user or invoked via `/commit`, `/push`, or `/release` commands.
+- **GitFlow discipline** - Never commit directly to `main`. All work goes through `develop`. Releases merge develop→main via fast-forward only.
+- **Push to both remotes** - Always push to `origin` (GitLab) AND `github` (GitHub). Use `/push` to handle this automatically.
 - **Test locally first** - Always verify changes work locally before pushing
 - **Push to develop first** - Never push directly to main without testing in dev
 - **Build before testing** - Run `gulp build` + restart Ghost after CSS/JS changes

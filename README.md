@@ -105,6 +105,22 @@ eventually-consistent/
     └── images/              # Theme images
 ```
 
+## Branching Model
+
+This project uses **GitFlow** with dual remotes:
+
+| Branch | Purpose |
+|--------|---------|
+| `develop` | Default branch — active development, deploys to dev |
+| `main` | Production — only updated via release merges, deploys to prod |
+
+| Remote | Platform |
+|--------|----------|
+| `origin` | GitLab (primary, CI/CD) |
+| `github` | GitHub (public mirror) |
+
+Releases merge `develop` → `main` (fast-forward), create an annotated tag, and push to both remotes.
+
 ## Acknowledgments
 
 - [Dawn](https://github.com/TryGhost/Dawn) by [Ghost Foundation](https://ghost.org/) — the base theme this fork builds on
