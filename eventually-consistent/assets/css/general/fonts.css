@@ -1,0 +1,40 @@
+/* JetBrains Mono from Google Fonts for monospace/code */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Charter-style serif from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 400;
+    src: local(""), url("../fonts/mulish-v10-latin-regular.woff2") format("woff2"), url("../fonts/mulish-v10-latin-regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 700;
+    src: local(""), url("../fonts/mulish-v10-latin-700.woff2") format("woff2"), url("../fonts/mulish-v10-latin-700.woff") format("woff");
+}
+
+@font-face {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 800;
+    src: local(""), url("../fonts/mulish-v10-latin-800.woff2") format("woff2"), url("../fonts/mulish-v10-latin-800.woff") format("woff");
+}
+
+@font-face {
+    font-family: Mulish;
+    font-style: italic;
+    font-weight: 400;
+    src: local(""), url("../fonts/mulish-v10-latin-italic.woff2") format("woff2"), url("../fonts/mulish-v10-latin-italic.woff") format("woff");
+}
+
+@font-face {
+    font-family: Mulish;
+    font-style: italic;
+    font-weight: 700;
+    src: local(""), url("../fonts/mulish-v10-latin-700italic.woff2") format("woff2"), url("../fonts/mulish-v10-latin-700italic.woff") format("woff");
+}

@@ -1,0 +1,103 @@
+{{!< default}}
+
+<main class="site-main">
+
+    {{#author}}
+    {{!-- Cover banner --}}
+    <section class="ec-author-cover{{#if cover_image}} has-cover{{/if}}">
+        {{#if cover_image}}
+            <img class="ec-author-cover-image" src="{{img_url cover_image size="xl"}}" alt="{{name}}">
+        {{/if}}
+        <div class="ec-author-cover-overlay"></div>
+    </section>
+
+    {{!-- Profile section --}}
+    <section class="ec-author-profile gh-canvas">
+        <div class="ec-author-avatar">
+            {{#if profile_image}}
+                <img class="ec-author-avatar-image" src="{{img_url profile_image size="m"}}" alt="{{name}}">
+            {{else}}
+                <span class="ec-author-avatar-placeholder">{{name.[0]}}</span>
+            {{/if}}
+        </div>
+
+        {{#if website}}
+            <h1 class="ec-author-name">
+                <a href="{{website}}" target="_blank" rel="noopener noreferrer">{{name}}</a>
+            </h1>
+        {{else}}
+            <h1 class="ec-author-name">{{name}}</h1>
+        {{/if}}
+
+        {{#if location}}
+            <span class="ec-author-location">{{location}}</span>
+        {{/if}}
+
+        {{#if bio}}
+            <div class="ec-author-bio">{{bio}}</div>
+        {{/if}}
+
+        <div class="ec-author-social">
+            {{#if website}}
+                <a class="ec-author-social-link" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/website"}}
+                </a>
+            {{/if}}
+            {{#if facebook}}
+                <a class="ec-author-social-link" href="{{social_url type="facebook"}}" title="Facebook" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/facebook"}}
+                </a>
+            {{/if}}
+            {{#if twitter}}
+                <a class="ec-author-social-link" href="{{social_url type="twitter"}}" title="X / Twitter" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/twitter"}}
+                </a>
+            {{/if}}
+            {{#if linkedin}}
+                <a class="ec-author-social-link" href="{{social_url type="linkedin"}}" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/linkedin"}}
+                </a>
+            {{/if}}
+            {{#if bluesky}}
+                <a class="ec-author-social-link" href="{{social_url type="bluesky"}}" title="Bluesky" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/bluesky"}}
+                </a>
+            {{/if}}
+            {{#if threads}}
+                <a class="ec-author-social-link" href="{{social_url type="threads"}}" title="Threads" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/threads"}}
+                </a>
+            {{/if}}
+            {{#if mastodon}}
+                <a class="ec-author-social-link" href="{{social_url type="mastodon"}}" title="Mastodon" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/mastodon"}}
+                </a>
+            {{/if}}
+            {{#if tiktok}}
+                <a class="ec-author-social-link" href="{{social_url type="tiktok"}}" title="TikTok" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/tiktok"}}
+                </a>
+            {{/if}}
+            {{#if youtube}}
+                <a class="ec-author-social-link" href="{{social_url type="youtube"}}" title="YouTube" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/youtube"}}
+                </a>
+            {{/if}}
+            {{#if instagram}}
+                <a class="ec-author-social-link" href="{{social_url type="instagram"}}" title="Instagram" target="_blank" rel="noopener noreferrer">
+                    {{> "icons/instagram"}}
+                </a>
+            {{/if}}
+        </div>
+    </section>
+    {{/author}}
+
+    <div class="post-feed gh-feed gh-canvas">
+        {{#foreach posts}}
+            {{> "loop"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+</main>

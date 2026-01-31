@@ -1,0 +1,733 @@
+/* Eventually Consistent - Custom Overrides */
+
+/* ============================================
+   Typography - Monospace Headings
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6,
+.gh-head-logo,
+.gh-cover-title,
+.post-title,
+.article-title,
+.gh-article-title {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+}
+
+/* Logo in header */
+.gh-head-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   Accent Color Overrides
+   ============================================ */
+
+/* Primary button (Subscribe) — higher specificity to override shared-theme-assets */
+.gh-head-actions .gh-btn,
+a.gh-primary-btn.gh-btn,
+a.gh-head-btn.gh-btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--btn-text-color);
+}
+
+.gh-head-actions .gh-btn:hover,
+a.gh-primary-btn.gh-btn:hover,
+a.gh-head-btn.gh-btn:hover {
+    background-color: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+}
+
+/* Cover CTA buttons */
+.gh-cover-cta .button {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.gh-cover-cta .button:hover {
+    background-color: var(--accent-color);
+    color: var(--btn-text-color);
+}
+
+/* Links */
+a:hover {
+    color: var(--accent-color);
+}
+
+/* ============================================
+   Featured Section
+   ============================================ */
+
+.featured-title {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+/* Featured card without image */
+.featured-card .no-image {
+    background: linear-gradient(135deg, var(--lighter-gray-color) 0%, var(--light-gray-color) 100%);
+}
+
+/* ============================================
+   Post List
+   ============================================ */
+
+/* Date styling */
+.post-date,
+.gh-date {
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* Reading time */
+.reading-time {
+    font-family: var(--font-mono);
+    color: var(--secondary-text-color);
+}
+
+/* ============================================
+   Table of Contents - Desktop Sidebar
+   ============================================ */
+
+/* Widen the post content container for wide screens */
+.single-content-wrap.gh-canvas {
+    --content-width: 860px;
+    --container-width: 1400px;
+    padding: 0 4vmin;
+}
+
+/* Override Dawn's gh-canvas grid so TOC layout spans full width */
+.single-content-wrap.gh-canvas > .ec-toc-mobile,
+.single-content-wrap.gh-canvas > .single-content-with-toc {
+    grid-column: wide-start / wide-end;
+}
+
+.single-content-with-toc {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 48px;
+    align-items: start;
+}
+
+.ec-toc-sidebar {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .ec-toc-sidebar {
+        display: block;
+    }
+
+    .ec-toc-mobile {
+        display: none;
+    }
+}
+
+.ec-toc-sticky {
+    position: sticky;
+    top: 100px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.ec-toc-title {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary-text-color);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ec-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ec-toc-item {
+    margin-bottom: 4px;
+}
+
+.ec-toc-item-h3 {
+    padding-left: 14px;
+}
+
+.ec-toc-link {
+    display: block;
+    padding: 4px 8px;
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    line-height: 1.4;
+    color: var(--secondary-text-color);
+    border-left: 2px solid transparent;
+    border-radius: 0 3px 3px 0;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.ec-toc-link:hover {
+    color: var(--accent-color);
+    background-color: rgba(63, 185, 80, 0.05);
+}
+
+.ec-toc-link.active {
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+    background-color: rgba(63, 185, 80, 0.08);
+    font-weight: 500;
+}
+
+/* ============================================
+   Table of Contents - Mobile Collapsible
+   ============================================ */
+
+.ec-toc-mobile {
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+@media (max-width: 1099px) {
+    .single-content-with-toc {
+        display: block;
+    }
+}
+
+.ec-toc-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    background-color: var(--lighter-gray-color);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ec-toc-toggle:hover {
+    background-color: var(--light-gray-color);
+}
+
+.ec-toc-toggle-icon {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.ec-toc-mobile .ec-toc-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 16px;
+}
+
+.ec-toc-mobile .ec-toc-nav.open {
+    max-height: 500px;
+    padding: 8px 16px 16px;
+}
+
+/* ============================================
+   Code Blocks with Terminal Header
+   ============================================ */
+
+pre, code, kbd, samp {
+    font-family: var(--font-mono);
+}
+
+code {
+    background-color: var(--lighter-gray-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+pre {
+    background-color: var(--lighter-gray-color);
+    border-radius: 0 0 6px 6px;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+.ec-code-block {
+    position: relative;
+    margin-bottom: 1.5em;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.ec-code-block pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+/* Terminal-style header bar */
+.ec-code-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    background-color: var(--light-gray-color);
+    border-bottom: 1px solid var(--border-color);
+    min-height: 36px;
+}
+
+/* Three terminal dots */
+.ec-code-dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.ec-code-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.ec-code-dots span:nth-child(1) {
+    background-color: #ff5f56;
+}
+
+.ec-code-dots span:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.ec-code-dots span:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.ec-code-lang {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex: 1;
+}
+
+.ec-code-copy {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.ec-code-block:hover .ec-code-copy {
+    opacity: 1;
+}
+
+.ec-code-copy:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.ec-code-copy.copied {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    opacity: 1;
+}
+
+/* ============================================
+   Tables - Improved Styling
+   ============================================ */
+
+/* Override shared-theme-assets display: inline-block back to table */
+.gh-content table:not(.gist table) {
+    display: table;
+    background: none;
+}
+
+/* Kill the white gradient scroll indicators from shared-theme-assets */
+.gh-content table:not(.gist table) td:first-child,
+.gh-content table:not(.gist table) td:last-child {
+    background-image: none;
+}
+
+.gh-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 1.4rem;
+    margin: 2em 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.gh-content table thead {
+    background-color: var(--lighter-gray-color);
+}
+
+.gh-content table th {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-color);
+    padding: 16px 24px;
+    text-align: left;
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.gh-content table td {
+    padding: 16px 24px;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+}
+
+.gh-content table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.gh-content table tbody tr:hover {
+    background-color: rgba(63, 185, 80, 0.04);
+}
+
+/* Alternate row shading */
+.gh-content table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Table scroll wrapper (injected by JS) */
+.ec-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2em 0;
+}
+
+.ec-table-wrap table {
+    margin: 0;
+}
+
+/* Scroll hint gradient on mobile */
+@media (max-width: 767px) {
+    .ec-table-wrap {
+        position: relative;
+    }
+
+    .ec-table-wrap::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to right, transparent, var(--white-color));
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    .gh-content table {
+        font-size: 1.2rem;
+        min-width: 500px;
+    }
+
+    .gh-content table th,
+    .gh-content table td {
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+}
+
+/* ============================================
+   Author Page - Cover Banner
+   ============================================ */
+
+.ec-author-cover {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: var(--lighter-gray-color);
+    overflow: hidden;
+}
+
+.ec-author-cover.has-cover {
+    height: 40vh;
+    min-height: 250px;
+    max-height: 450px;
+}
+
+.ec-author-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ec-author-cover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--white-color) 0%, transparent 100%);
+}
+
+/* ============================================
+   Author Page - Profile Section
+   ============================================ */
+
+.ec-author-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ec-author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--white-color);
+    box-shadow: 0 0 0 2px var(--accent-color);
+    margin-bottom: 1.6rem;
+    flex-shrink: 0;
+}
+
+.ec-author-avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ec-author-avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-mono);
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    background-color: var(--lighter-gray-color);
+}
+
+.ec-author-name {
+    font-family: var(--font-mono);
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.02em;
+}
+
+.ec-author-name a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+}
+
+.ec-author-name a:hover {
+    color: var(--accent-color);
+}
+
+.ec-author-location {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+}
+
+.ec-author-bio {
+    max-width: 520px;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+}
+
+.ec-author-social {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ec-author-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--secondary-text-color);
+    background-color: var(--lighter-gray-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.ec-author-social-link:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(63, 185, 80, 0.1);
+}
+
+.ec-author-social-link .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   Load More Button
+   ============================================ */
+
+.gh-loadmore {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--secondary-text-color);
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px 28px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.gh-loadmore:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(63, 185, 80, 0.06);
+}
+
+/* Loading state — spinner replaces text */
+.gh-loadmore.loading {
+    text-indent: -9999px;
+    min-width: 140px;
+    pointer-events: none;
+}
+
+.gh-loadmore.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: ec-spin 0.6s linear infinite;
+}
+
+@keyframes ec-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Footer Refinements
+   ============================================ */
+
+/* Remove default Ghost social if not configured */
+.ec-footer-social a[href*="facebook.com/ghost"],
+.ec-footer-social a[href*="twitter.com/ghost"],
+.ec-footer-social a[href*="x.com/ghost"] {
+    display: none;
+}
+
+/* Status dot pulse animation */
+.ec-status-dot {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* ============================================
+   Dark Mode Enhancements
+   ============================================ */
+
+.theme-dark .gh-cover {
+    background-color: var(--lighter-gray-color);
+}
+
+.theme-dark pre {
+    background-color: var(--lighter-gray-color);
+    border: 1px solid var(--border-color);
+}
+
+.theme-dark code {
+    background-color: rgba(63, 185, 80, 0.1);
+    color: var(--accent-color);
+}
+
+.theme-dark pre code {
+    background-color: transparent;
+    color: var(--primary-text-color);
+}
+
+/* ============================================
+   Misc Refinements
+   ============================================ */
+
+/* Search icon */
+.gh-search:hover {
+    color: var(--accent-color);
+}
+
+/* Navigation hover */
+.gh-head-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* Tag pills */
+.post-tag,
+.gh-article-tag {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

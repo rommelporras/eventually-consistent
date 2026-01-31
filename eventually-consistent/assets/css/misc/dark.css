@@ -1,0 +1,222 @@
+/* Eventually Consistent - Dark Mode (Default) */
+.theme-dark:root,
+html:not(.theme-light):root {
+    /* Dark Mode Colors - GitHub Dark Inspired */
+    --primary-text-color: #c9d1d9;
+    --secondary-text-color: #8b949e;
+    --white-color: #0d1117;
+    --color-white: #0d1117;
+    --lighter-gray-color: #161b22;
+    --color-lighter-gray: #161b22;
+    --light-gray-color: #21262d;
+    --color-light-gray: #21262d;
+    --color-light-color: #21262d;
+    --mid-gray-color: #484f58;
+    --color-mid-gray: #484f58;
+    --dark-gray-color: #c9d1d9;
+    --color-dark-gray: #c9d1d9;
+    --darker-gray-color: #f0f6fc;
+    --color-darker-gray: #f0f6fc;
+
+    /* Footer Dark Mode */
+    --footer-bg: #161b22;
+    --status-bar-bg: #0d1117;
+    --border-color: #21262d;
+
+    /* Keep accent colors */
+    --accent-color: #3fb950;
+    --accent-secondary: #f0883e;
+    --github-color: #f0f6fc;
+}
+
+.theme-dark .gh-head-logo img:first-child:not(:only-child) {
+    opacity: 0;
+}
+
+.theme-dark .gh-head-logo img + img {
+    opacity: 1;
+}
+
+.theme-dark .sticky {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-dark .form-button,
+.theme-dark .pswp__counter {
+    color: var(--darker-gray-color);
+}
+
+.theme-dark .share-link {
+    background-color: var(--darker-gray-color);
+}
+
+.theme-dark .share-link-facebook {
+    color: var(--facebook-color);
+}
+
+.theme-dark .share-link-twitter {
+    color: var(--twitter-color);
+}
+
+.theme-dark .share-link-linkedin {
+    color: var(--linkedin-color);
+}
+
+.theme-dark .share-link-bluesky {
+    color: var(--bluesky-color);
+}
+
+.theme-dark .share-link-threads {
+    color: var(--threads-color);
+}
+
+.theme-dark .share-link-mastodon {
+    color: var(--mastodon-color);
+}
+
+.theme-dark .share-link-tiktok {
+    color: var(--tiktok-color);
+}
+
+.theme-dark .share-link-youtube {
+    color: var(--youtube-color);
+}
+
+.theme-dark .share-link-instagram {
+    color: var(--instagram-color);
+}
+
+.theme-dark .kg-audio-card button {
+    color: var(--darker-gray-color);
+}
+
+.theme-dark .kg-bookmark-card a.kg-bookmark-container,
+.theme-dark .kg-bookmark-card a.kg-bookmark-container:hover,
+.theme-dark .kg-file-card-container,
+.theme-dark .kg-file-card-container:hover,
+.theme-dark .kg-audio-card,
+.theme-dark .kg-product-card-container {
+    background-color: var(--lighter-gray-color) !important;
+    opacity: 1;
+}
+
+/* Table white glow fix — kill shared-theme-assets gradients in explicit dark mode */
+.theme-dark .gh-content table:not(.gist table) {
+    background: none;
+}
+
+.theme-dark .gh-content table:not(.gist table) td:first-child,
+.theme-dark .gh-content table:not(.gist table) td:last-child {
+    background-image: none;
+}
+
+/* Terminal code header — darker in explicit dark mode */
+.theme-dark .ec-code-header {
+    background-color: var(--white-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not(.theme-light):root {
+        --primary-text-color: #c9d1d9;
+        --secondary-text-color: #8b949e;
+        --white-color: #0d1117;
+        --color-white: #0d1117;
+        --lighter-gray-color: #161b22;
+        --light-gray-color: #21262d;
+        --mid-gray-color: #484f58;
+        --dark-gray-color: #c9d1d9;
+        --darker-gray-color: #f0f6fc;
+        --color-darker-gray: #f0f6fc;
+
+        /* Footer Dark Mode */
+        --footer-bg: #161b22;
+        --status-bar-bg: #0d1117;
+        --border-color: #21262d;
+    }
+
+    html:not(.theme-light) .gh-head-logo img:first-child:not(:only-child) {
+        opacity: 0;
+    }
+
+    html:not(.theme-light) .gh-head-logo img + img {
+        opacity: 1;
+    }
+
+    html:not(.theme-light) .sticky {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    html:not(.theme-light) .form-button,
+    html:not(.theme-light) .pswp__counter {
+        color: var(--darker-gray-color);
+    }
+
+    html:not(.theme-light) .share-link {
+        background-color: var(--darker-gray-color);
+    }
+
+    html:not(.theme-light) .share-link-facebook {
+        color: var(--facebook-color);
+    }
+
+    html:not(.theme-light) .share-link-twitter {
+        color: var(--twitter-color);
+    }
+
+    html:not(.theme-light) .share-link-linkedin {
+        color: var(--linkedin-color);
+    }
+
+    html:not(.theme-light) .share-link-bluesky {
+        color: var(--bluesky-color);
+    }
+
+    html:not(.theme-light) .share-link-threads {
+        color: var(--threads-color);
+    }
+
+    html:not(.theme-light) .share-link-mastodon {
+        color: var(--mastodon-color);
+    }
+
+    html:not(.theme-light) .share-link-tiktok {
+        color: var(--tiktok-color);
+    }
+
+    html:not(.theme-light) .share-link-youtube {
+        color: var(--youtube-color);
+    }
+
+    html:not(.theme-light) .share-link-instagram {
+        color: var(--instagram-color);
+    }
+
+    html:not(.theme-light) .kg-audio-card button {
+        color: var(--darker-gray-color);
+    }
+
+    html:not(.theme-light) .kg-bookmark-card a.kg-bookmark-container,
+    html:not(.theme-light) .kg-bookmark-card a.kg-bookmark-container:hover,
+    html:not(.theme-light) .kg-file-card-container,
+    html:not(.theme-light) .kg-file-card-container:hover,
+    html:not(.theme-light) .kg-audio-card,
+    html:not(.theme-light) .kg-product-card-container {
+        background-color: var(--lighter-gray-color) !important;
+        opacity: 1;
+    }
+
+    /* Table white glow fix — kill shared-theme-assets gradients in dark/auto mode */
+    html:not(.theme-light) .gh-content table:not(.gist table) {
+        background: none;
+    }
+
+    html:not(.theme-light) .gh-content table:not(.gist table) td:first-child,
+    html:not(.theme-light) .gh-content table:not(.gist table) td:last-child {
+        background-image: none;
+    }
+
+    /* Terminal code header — darker in dark mode */
+    html:not(.theme-light) .ec-code-header {
+        background-color: var(--white-color);
+    }
+}

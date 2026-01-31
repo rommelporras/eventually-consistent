@@ -1,0 +1,134 @@
+# Ghost Theme CI/CD Pipeline
+# Deploys theme to Ghost via Admin API with proper JWT authentication
+#
+# Required CI/CD Variables (Settings → CI/CD → Variables):
+#   GHOST_URL           - Ghost instance URL (scoped per environment)
+#   GHOST_ADMIN_API_KEY - id:secret from Ghost Admin Integration (scoped per environment)
+#
+# Variable setup (same key, different environment scope):
+#   GHOST_URL           [development] = https://blog-dev.k8s.home.rommelporras.com
+#   GHOST_URL           [production]  = https://blog.k8s.home.rommelporras.com
+#   GHOST_ADMIN_API_KEY [development] = <dev id:secret>
+#   GHOST_ADMIN_API_KEY [production]  = <prod id:secret>
+
+stages:
+  - validate
+  - build
+  - deploy
+
+variables:
+  THEME_DIR: eventually-consistent
+  THEME_ZIP: eventually-consistent.zip
+
+# Validate theme with gscan
+validate:
+  stage: validate
+  image: node:24-alpine
+  script:
+    - cd $THEME_DIR
+    - npm ci
+    - npx gscan . --fatal
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_COMMIT_BRANCH == "main"
+  allow_failure: false
+
+# Build theme and create zip
+build:
+  stage: build
+  image: node:24-alpine
+  script:
+    - cd $THEME_DIR
+    - npm ci
+    - npx gulp zip
+    - ls -la dist/
+  artifacts:
+    paths:
+      - $THEME_DIR/dist/$THEME_ZIP
+    expire_in: 1 hour
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_COMMIT_BRANCH == "main"
+
+# Deploy script template
+.deploy-script: &deploy-script
+  image: alpine:3.19
+  before_script:
+    - apk add --no-cache curl openssl
+  script:
+    - |
+      echo "Deploying theme to ${DEPLOY_ENV} Ghost..."
+
+      # Ghost Admin API requires JWT authentication
+      # API Key format: id:secret (from Ghost Admin → Settings → Integrations)
+      ID=$(echo "$GHOST_ADMIN_API_KEY" | cut -d':' -f1)
+      SECRET=$(echo "$GHOST_ADMIN_API_KEY" | cut -d':' -f2)
+
+      if [ -z "$ID" ] || [ -z "$SECRET" ]; then
+        echo "ERROR: Invalid API key format. Expected 'id:secret'"
+        exit 1
+      fi
+
+      # Generate JWT token
+      NOW=$(date +%s)
+      EXP=$((NOW + 300))
+
+      base64url() {
+        openssl base64 -e -A | tr '+/' '-_' | tr -d '='
+      }
+
+      HEADER=$(printf '{"alg":"HS256","typ":"JWT","kid":"%s"}' "$ID" | base64url)
+      PAYLOAD=$(printf '{"iat":%d,"exp":%d,"aud":"/admin/"}' "$NOW" "$EXP" | base64url)
+      SIGNATURE=$(printf '%s.%s' "$HEADER" "$PAYLOAD" | \
+        openssl dgst -sha256 -mac HMAC -macopt hexkey:"$SECRET" -binary | base64url)
+
+      TOKEN="${HEADER}.${PAYLOAD}.${SIGNATURE}"
+      echo "JWT token generated successfully"
+
+      # Upload theme
+      RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+        "$GHOST_URL/ghost/api/admin/themes/upload/" \
+        -H "Authorization: Ghost ${TOKEN}" \
+        -H "Accept-Version: v5.0" \
+        -F "file=@${THEME_DIR}/dist/${THEME_ZIP}")
+
+      HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+      BODY=$(echo "$RESPONSE" | sed '$d')
+
+      echo "Response: $BODY"
+
+      if [ "$HTTP_CODE" -ne 200 ] && [ "$HTTP_CODE" -ne 201 ]; then
+        echo "Deployment failed with status $HTTP_CODE"
+        exit 1
+      fi
+
+      echo "Theme deployed successfully to ${DEPLOY_ENV}!"
+
+# Deploy to dev Ghost
+deploy-dev:
+  stage: deploy
+  <<: *deploy-script
+  variables:
+    DEPLOY_ENV: development
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+  needs:
+    - build
+  environment:
+    name: development
+    url: https://blog-dev.k8s.home.rommelporras.com
+
+# Deploy to prod Ghost
+deploy-prod:
+  stage: deploy
+  <<: *deploy-script
+  variables:
+    DEPLOY_ENV: production
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  needs:
+    - build
+  environment:
+    name: production
+    url: https://blog.rommelporras.com

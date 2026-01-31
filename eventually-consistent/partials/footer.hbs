@@ -1,0 +1,101 @@
+<footer class="ec-footer gh-outer">
+    <div class="ec-footer-inner gh-inner">
+        <!-- Column 1: Bio & Social -->
+        <div class="ec-footer-col ec-footer-bio">
+            <h4 class="ec-footer-title">{{@site.title}}</h4>
+            <p class="ec-footer-tagline">{{@site.description}}</p>
+            <div class="ec-footer-social">
+                {{#if @site.facebook}}
+                    <a href="{{social_url type="facebook" value=@site.facebook}}" class="ec-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+                        {{> "icons/facebook"}}
+                    </a>
+                {{/if}}
+                {{#if @site.twitter}}
+                    <a href="{{social_url type="twitter" value=@site.twitter}}" class="ec-social-link" target="_blank" rel="noopener" aria-label="Twitter">
+                        {{> "icons/twitter"}}
+                    </a>
+                {{/if}}
+                <a href="https://github.com/rommelporras" class="ec-social-link" target="_blank" rel="noopener" aria-label="GitHub">
+                    {{> "icons/github"}}
+                </a>
+                <a href="https://linkedin.com/in/rommelporras" class="ec-social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    {{> "icons/linkedin"}}
+                </a>
+            </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="ec-footer-col ec-footer-links">
+            <h4 class="ec-footer-title">Quick Links</h4>
+            <nav class="ec-footer-nav">
+                <a href="{{@site.url}}">Home</a>
+                <a href="{{@site.url}}/about/">About</a>
+                <a href="{{@site.url}}/rss/" class="ec-rss-link">
+                    {{> "icons/rss"}}
+                    <span>RSS Feed</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Column 3: Tags -->
+        <div class="ec-footer-col ec-footer-tags">
+            <h4 class="ec-footer-title">Topics</h4>
+            <div class="ec-tag-list">
+                {{#get "tags" limit="8" order="count.posts desc"}}
+                    {{#foreach tags}}
+                        <a href="{{url}}" class="ec-tag">{{name}}</a>
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+
+        <!-- Column 4: Built With -->
+        <div class="ec-footer-col ec-footer-tech">
+            <h4 class="ec-footer-title">Built With</h4>
+            <ul class="ec-tech-list">
+                <li>
+                    <span class="ec-tech-icon">{{> "icons/kubernetes"}}</span>
+                    <span>Kubernetes (kubeadm)</span>
+                </li>
+                <li>
+                    <span class="ec-tech-icon">{{> "icons/cloudflare"}}</span>
+                    <span>Cloudflare Tunnel</span>
+                </li>
+                <li>
+                    <span class="ec-tech-icon">{{> "icons/proxmox"}}</span>
+                    <span>Proxmox VE</span>
+                </li>
+                <li>
+                    <span class="ec-tech-icon">{{> "icons/opnsense"}}</span>
+                    <span>OPNsense</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="ec-status-bar gh-outer">
+        <div class="ec-status-inner gh-inner">
+            <div class="ec-status-item">
+                <span class="ec-status-dot"></span>
+                <span>Self-Hosted</span>
+            </div>
+            <div class="ec-status-item">
+                <span class="ec-status-label">Homelab</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="ec-copyright-bar gh-outer">
+        <div class="ec-copyright-inner gh-inner">
+            <div class="ec-copyright">
+                © {{date format="YYYY"}} Rommel Porras
+            </div>
+            <a href="https://rommelporras.com/homelab/" class="ec-arch-link" target="_blank" rel="noopener">
+                View Architecture
+                {{> "icons/arrow-right"}}
+            </a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.playwright-mcp/
+
+# Build output
+dist/
+
+# Local development
+.env
+.env.local
+*.log
+
+# Database backups (synced from prod)
+backup/*.sql
+backup/*.tar.gz
+
+# IDE & tools
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ghost content (managed by Docker volume)
+content/

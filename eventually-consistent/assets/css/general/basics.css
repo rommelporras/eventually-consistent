@@ -1,0 +1,81 @@
+:root {
+    /* Eventually Consistent - Terminal Color Scheme */
+    --brand-color: var(--ghost-accent-color, #3fb950);
+    --accent-color: #3fb950;
+    --accent-secondary: #f0883e;
+
+    /* Light Mode Colors */
+    --primary-text-color: #24292f;
+    --secondary-text-color: #57606a;
+    --white-color: #fff;
+    --lighter-gray-color: #f6f8fa;
+    --light-gray-color: #d0d7de;
+    --mid-gray-color: #8c959f;
+    --dark-gray-color: #424a53;
+    --darker-gray-color: #1f2328;
+    --black-color: #000;
+
+    /* Footer Colors */
+    --footer-bg: var(--lighter-gray-color);
+    --status-bar-bg: var(--light-gray-color);
+    --border-color: var(--light-gray-color);
+
+    /* Status Colors */
+    --green-color: #3fb950;
+    --orange-color: #f0883e;
+    --red-color: #f85149;
+
+    /* Social Colors */
+    --facebook-color: #3b5998;
+    --twitter-color: #1da1f2;
+    --linkedin-color: #0B66C3;
+    --bluesky-color: #1185FE;
+    --threads-color: #000000;
+    --mastodon-color: #6364FF;
+    --tiktok-color: #000000;
+    --youtube-color: #ff0000;
+    --instagram-color: #000000;
+    --rss-color: #f26522;
+    --github-color: #24292f;
+
+    /* Button */
+    --btn-text-color: #0d1117;
+
+    /* Animation */
+    --animation-base: ease-in-out;
+
+    /* Typography - Terminal Inspired */
+    --font-sans: Mulish, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+    --font-serif: "Libre Baskerville", Charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
+    /* Layout */
+    --navbar-height: 80px;
+    --content-font-size: 1.7rem;
+    --header-spacing: 60px;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --header-spacing: 30px;
+    }
+}
+
+body {
+    color: var(--primary-text-color);
+    background-color: var(--white-color);
+}
+
+a {
+    color: var(--darker-gray-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+    color: var(--darker-gray-color);
+}

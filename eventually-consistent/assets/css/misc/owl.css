@@ -1,0 +1,67 @@
+/* Scroll-Snap Carousel (replaces Owl Carousel) */
+.featured-feed {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+}
+
+.featured-feed::-webkit-scrollbar {
+    display: none;
+}
+
+.featured-feed > article {
+    flex: 0 0 calc((100% - 60px) / 3);
+    scroll-snap-align: start;
+    min-width: 0;
+}
+
+@media (max-width: 991px) {
+    .featured-feed > article {
+        flex: 0 0 calc((100% - 30px) / 2);
+    }
+}
+
+@media (max-width: 767px) {
+    .featured-feed > article {
+        flex: 0 0 100%;
+    }
+}
+
+/* Carousel nav buttons */
+.carousel-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.carousel-prev,
+.carousel-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: var(--dark-gray-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--light-gray-color);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.carousel-prev:disabled,
+.carousel-next:disabled {
+    color: var(--mid-gray-color);
+    cursor: default;
+}
+
+.carousel-prev .icon,
+.carousel-next .icon {
+    width: 18px;
+    height: 18px;
+}
