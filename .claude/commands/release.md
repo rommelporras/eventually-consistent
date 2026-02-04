@@ -1,6 +1,6 @@
 # Create Release
 
-GitFlow release: merge develop→main, tag, push to both remotes, create GitHub release.
+GitFlow release: merge develop→main, tag, push to both remotes, create GitHub + GitLab releases.
 
 ## Usage
 
@@ -109,16 +109,57 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    - Title: "Title Here"
    - Branch: develop → main (fast-forward merge)
    - Commits: 5
+   - Will update: CHANGELOG.md on develop (auto-committed)
    - Will push: main + tag to origin (GitLab) + github (GitHub)
-   - Will push: develop to origin (GitLab) + github (GitHub)
    - Will create: GitHub release with formatted notes
+   - Will create: GitLab release with formatted notes
    ```
 
-6. **Execute Release**
+6. **Update CHANGELOG.md on develop**
+
+   Before merging, prepend a new entry to `CHANGELOG.md` on develop.
+
+   Read the existing CHANGELOG.md, then prepend the new version entry **after the header
+   lines** (title, blank line, format description, semver description, and blank line)
+   but **before the first `## [v` entry**.
+
+   **CHANGELOG entry format** (Keep a Changelog):
+   ```markdown
+   ## [v<VERSION>](https://github.com/rommelporras/eventually-consistent/releases/tag/v<VERSION>) - <YYYY-MM-DD>
+
+   <One sentence summary of this release>
+
+   ### Added
+   - New features from `feat:` commits
+
+   ### Fixed
+   - Bug fixes from `fix:` commits
+
+   ### Changed
+   - Changes from `refactor:`, `chore:`, `infra:` commits
+
+   ### Removed
+   - Anything removed (if applicable)
+   ```
+
+   Rules:
+   - Only include sections (Added/Fixed/Changed/Removed) that have items
+   - Date is today's date in YYYY-MM-DD format
+   - Descriptions should be human-readable, not raw commit messages
+   - Link the version heading to the GitHub release
+
+   **Commit and push the changelog update:**
+   ```bash
+   git add CHANGELOG.md
+   git commit -m "docs: update CHANGELOG for v<VERSION>"
+   ```
+
+   This commit becomes part of the release merge.
+
+7. **Execute Release**
 
    **Merge develop → main:**
    ```bash
-   # Switch to main and fast-forward merge
    git checkout main
    git merge develop --ff-only
    ```
@@ -154,24 +195,35 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    gh release create v<VERSION> \
      --repo rommelporras/eventually-consistent \
      --title "v<VERSION> - <Title>" \
-     --notes "<github release notes markdown>"
+     --notes "<release notes markdown>"
    ```
+
+   **Create GitLab release:**
+   ```bash
+   glab release create v<VERSION> \
+     --name "v<VERSION> - <Title>" \
+     --notes "<release notes markdown>"
+   ```
+
+   Use the same release notes for both platforms.
 
    **Switch back to develop:**
    ```bash
    git checkout develop
    ```
 
-7. **Report Results**
+8. **Report Results**
 
    Show a summary:
    ```
    Release Complete:
    - Version: v1.0.1
    - Tag: v1.0.1 on main
-   - origin (GitLab): ✓ main + tag pushed
+   - CHANGELOG.md: ✓ updated on develop
+   - origin (GitLab): ✓ main + tag + release created
    - github (GitHub): ✓ main + tag + release created
    - Current branch: develop
+   - GitLab release: <URL>
    - GitHub release: <URL>
    ```
 
@@ -235,9 +287,11 @@ Before releasing, verify:
 - [ ] Version number follows SemVer
 - [ ] Release notes are categorized and specific
 - [ ] Tag annotation has context sentence
+- [ ] CHANGELOG.md updated and committed on develop
 - [ ] Fast-forward merge from develop to main succeeds
 - [ ] Both remotes pushed (origin + github)
 - [ ] GitHub release created with formatted notes
+- [ ] GitLab release created with formatted notes
 - [ ] Back on `develop` branch after release
 
 ## Important Notes
