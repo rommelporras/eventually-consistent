@@ -1,5 +1,23 @@
 #gh-head {
     height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 300;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Dark mode sticky header background */
+.theme-dark #gh-head {
+    background-color: rgba(13, 17, 23, 0.85);
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not(.theme-light) #gh-head {
+        background-color: rgba(13, 17, 23, 0.85);
+    }
 }
 
 .gh-head-inner {

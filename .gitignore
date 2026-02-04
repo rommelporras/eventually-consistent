@@ -25,5 +25,9 @@ backup/*.tar.gz
 .DS_Store
 Thumbs.db
 
+# Screenshots (test artifacts)
+*.png
+*.jpeg
+
 # Ghost content (managed by Docker volume)
 content/

@@ -132,8 +132,8 @@ a:hover {
 
 .ec-toc-sticky {
     position: sticky;
-    top: 100px;
-    max-height: calc(100vh - 120px);
+    top: 86px;
+    max-height: calc(100vh - 106px);
     overflow-y: auto;
 }
 

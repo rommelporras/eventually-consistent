@@ -4,7 +4,7 @@
 services:
   ghost:
     image: ghost:6.14.0
-    container_name: ghost-dev
+    container_name: ec-ghost-dev
     restart: unless-stopped
     ports:
       - "2368:2368"
@@ -41,7 +41,7 @@ services:
 
   mysql:
     image: mysql:8.4.8
-    container_name: ghost-mysql-dev
+    container_name: ec-mysql-dev
     restart: unless-stopped
     # Configure MySQL for utf8mb4 (full unicode/emoji support)
     # Note: MySQL 8.4 LTS uses caching_sha2_password by default (mysql_native_password deprecated)
@@ -64,6 +64,6 @@ services:
 
 volumes:
   ghost-content:
-    name: blog-content
+    name: ec-ghost-content
   mysql-data:
-    name: blog-mysql
+    name: ec-mysql-data
