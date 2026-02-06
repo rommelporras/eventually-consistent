@@ -24,7 +24,21 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    - Working tree **must** be clean — abort if dirty
    - If on any other branch, abort with instructions to switch to `develop`
 
-2. **Determine Version and Title**
+2. **Remote Tag Collision Check**
+
+   Fetch latest tags from both remotes and verify the target version doesn't already exist:
+   ```bash
+   git fetch origin --tags
+   git fetch github --tags
+   git tag -l "v<VERSION>"
+   ```
+
+   If the tag already exists:
+   - **ABORT** immediately
+   - Show: `"Error: Tag v<VERSION> already exists."`
+   - Suggest the next available version
+
+3. **Determine Version and Title**
 
    **If user provided version and title** (e.g., `/release v1.0.1 "Title Here"`):
    - Use the provided version
@@ -47,7 +61,7 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    **First release** (no previous tags):
    - Default to `v0.1.0` unless user specifies
 
-3. **Analyze Changes for Release Notes**
+4. **Analyze Changes for Release Notes**
 
    Get commits since last tag (or all commits for first release):
    ```bash
@@ -64,7 +78,7 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
 
    Understand the PURPOSE, not just list commits.
 
-4. **Write Release Notes**
+5. **Write Release Notes**
 
    **Tag annotation format:**
    ```
@@ -100,22 +114,33 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    - `def5678` commit message 2
    ```
 
-5. **Show Release Plan**
+6. **Show Release Plan**
 
-   Present the plan and wait for confirmation:
+   Present the plan and **wait for user confirmation**:
    ```
    Release Plan:
    - Version: v1.0.1
    - Title: "Title Here"
    - Branch: develop → main (fast-forward merge)
    - Commits: 5
-   - Will update: CHANGELOG.md on develop (auto-committed)
-   - Will push: main + tag to origin (GitLab) + github (GitHub)
-   - Will create: GitHub release with formatted notes
-   - Will create: GitLab release with formatted notes
+
+   Pre-release checks:
+   - Remote tag collision: ✓ No conflict
+
+   Will do:
+   - Update CHANGELOG.md on develop (auto-committed)
+   - Fast-forward merge develop → main
+   - Create annotated tag v1.0.1
+   - Push main + tag to origin (GitLab) + github (GitHub)
+   - Create GitHub release with formatted notes
+   - Create GitLab release with formatted notes
+
+   Proceed with release? (waiting for confirmation)
    ```
 
-6. **Update CHANGELOG.md on develop**
+   **Do NOT proceed until user confirms.**
+
+7. **Update CHANGELOG.md on develop**
 
    Before merging, prepend a new entry to `CHANGELOG.md` on develop.
 
@@ -156,7 +181,7 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
 
    This commit becomes part of the release merge.
 
-7. **Execute Release**
+8. **Execute Release**
 
    **Merge develop → main:**
    ```bash
@@ -212,7 +237,7 @@ GitFlow release: merge develop→main, tag, push to both remotes, create GitHub 
    git checkout develop
    ```
 
-8. **Report Results**
+9. **Report Results**
 
    Show a summary:
    ```
@@ -283,6 +308,7 @@ Fixes:
 Before releasing, verify:
 - [ ] On `develop` branch (or `main` for hotfix)
 - [ ] Working tree is clean (no uncommitted changes)
+- [ ] Remote tags fetched and no version collision
 - [ ] All commits are meaningful and well-formatted
 - [ ] Version number follows SemVer
 - [ ] Release notes are categorized and specific
@@ -298,7 +324,9 @@ Before releasing, verify:
 
 - NEVER release with uncommitted changes
 - NEVER release without meaningful release notes
+- NEVER release without user confirmation of the release plan
 - NEVER force merge — fast-forward only from develop to main
+- Always fetch remote tags before creating a new tag
 - Always use annotated tags (`git tag -a`)
 - Follow semantic versioning (MAJOR.MINOR.PATCH)
 - First release defaults to v0.1.0
