@@ -13,6 +13,10 @@ Replace all Mulish font files with fresh downloads from Google Web Fonts Helper.
 
 - Replace all 10 Mulish font files (5 woff + 5 woff2) with valid downloads — fixes OTS parsing errors and "incorrect file size in WOFF header" warnings on both dev and prod
 
+### Changed
+
+- Add remote tag collision check and user confirmation gate to `/release` command
+
 ## [v1.1.1](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.1) - 2026-02-05
 
 Added CHANGELOG and improved release workflow.
