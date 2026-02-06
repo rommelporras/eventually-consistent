@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.2](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.2) - 2026-02-07
+
+Replace all Mulish font files with fresh downloads from Google Web Fonts Helper. The v1.1.0 font fix shipped corrupted files (woff2 files were identical copies, woff headers had incorrect sizes).
+
+### Fixed
+
+- Replace all 10 Mulish font files (5 woff + 5 woff2) with valid downloads — fixes OTS parsing errors and "incorrect file size in WOFF header" warnings on both dev and prod
+
 ## [v1.1.1](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.1) - 2026-02-05
 
 Added CHANGELOG and improved release workflow.
@@ -28,7 +36,7 @@ UI polish release with sticky navigation and font fixes.
 ### Fixed
 
 - Sticky TOC sidebar on desktop — grid `align-items: start` prevented sidebar from stretching, breaking `position: sticky`
-- Corrupted Mulish WOFF2 font files replaced with fresh Google Fonts downloads (eliminates OTS parsing warnings)
+- Corrupted Mulish WOFF2 font files replaced (partially — see v1.1.2 for complete fix)
 
 ### Changed
 
