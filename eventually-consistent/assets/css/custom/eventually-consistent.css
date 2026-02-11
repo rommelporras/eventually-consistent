@@ -1,6 +1,39 @@
 /* Eventually Consistent - Custom Overrides */
 
 /* ============================================
+   Accessibility
+   ============================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    padding: 1rem 2rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background: var(--brand-color);
+    color: var(--white-color);
+    font-size: 1.6rem;
+}
+
+/* ============================================
    Typography - Monospace Headings
    ============================================ */
 
@@ -98,7 +131,7 @@ a:hover {
 
 /* Widen the post content container for wide screens */
 .single-content-wrap.gh-canvas {
-    --content-width: 860px;
+    --content-width: 720px;
     --container-width: 1400px;
     padding: 0 4vmin;
 }
@@ -111,9 +144,10 @@ a:hover {
 
 .single-content-with-toc {
     display: grid;
-    grid-template-columns: 1fr 250px;
+    grid-template-columns: minmax(0, 1fr) 250px;
     gap: 48px;
     align-items: start;
+    max-width: 1020px;
 }
 
 .ec-toc-sidebar {
@@ -463,13 +497,29 @@ pre {
 
     .gh-content table {
         font-size: 1.2rem;
-        min-width: 500px;
     }
 
-    .gh-content table th,
-    .gh-content table td {
+    .gh-content table th {
         padding: 8px 10px;
         white-space: nowrap;
+    }
+
+    .gh-content table td {
+        padding: 8px 10px;
+        white-space: normal;
+    }
+
+    /* Reduce code block font size on mobile */
+    .gh-content pre {
+        font-size: 1.3rem;
+    }
+
+    /* Allow post titles to wrap on mobile feed */
+    .feed-title {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 }
 

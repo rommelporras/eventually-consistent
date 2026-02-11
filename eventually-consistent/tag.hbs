@@ -1,6 +1,6 @@
 {{!< default}}
 
-<main class="site-main">
+<main id="site-main" class="site-main">
 
     {{#tag}}
     <section class="tag">
@@ -12,6 +12,8 @@
             {{#if description}}
                 <div class="tag-description">{{description}}</div>
             {{/if}}
+
+            <div class="tag-post-count">{{plural ../pagination.total empty="" singular="% post" plural="% posts"}}</div>
 
             {{#if feature_image}}
                 <div class="tag-media u-placeholder horizontal kg-width-wide">

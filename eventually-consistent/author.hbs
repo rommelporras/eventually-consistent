@@ -1,6 +1,6 @@
 {{!< default}}
 
-<main class="site-main">
+<main id="site-main" class="site-main">
 
     {{#author}}
     {{!-- Cover banner --}}
@@ -39,52 +39,52 @@
 
         <div class="ec-author-social">
             {{#if website}}
-                <a class="ec-author-social-link" href="{{website}}" title="Website" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{website}}" title="Website" aria-label="Website" target="_blank" rel="noopener noreferrer">
                     {{> "icons/website"}}
                 </a>
             {{/if}}
             {{#if facebook}}
-                <a class="ec-author-social-link" href="{{social_url type="facebook"}}" title="Facebook" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="facebook"}}" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                     {{> "icons/facebook"}}
                 </a>
             {{/if}}
             {{#if twitter}}
-                <a class="ec-author-social-link" href="{{social_url type="twitter"}}" title="X / Twitter" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="twitter"}}" title="X / Twitter" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer">
                     {{> "icons/twitter"}}
                 </a>
             {{/if}}
             {{#if linkedin}}
-                <a class="ec-author-social-link" href="{{social_url type="linkedin"}}" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="linkedin"}}" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                     {{> "icons/linkedin"}}
                 </a>
             {{/if}}
             {{#if bluesky}}
-                <a class="ec-author-social-link" href="{{social_url type="bluesky"}}" title="Bluesky" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="bluesky"}}" title="Bluesky" aria-label="Bluesky" target="_blank" rel="noopener noreferrer">
                     {{> "icons/bluesky"}}
                 </a>
             {{/if}}
             {{#if threads}}
-                <a class="ec-author-social-link" href="{{social_url type="threads"}}" title="Threads" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="threads"}}" title="Threads" aria-label="Threads" target="_blank" rel="noopener noreferrer">
                     {{> "icons/threads"}}
                 </a>
             {{/if}}
             {{#if mastodon}}
-                <a class="ec-author-social-link" href="{{social_url type="mastodon"}}" title="Mastodon" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="mastodon"}}" title="Mastodon" aria-label="Mastodon" target="_blank" rel="noopener noreferrer">
                     {{> "icons/mastodon"}}
                 </a>
             {{/if}}
             {{#if tiktok}}
-                <a class="ec-author-social-link" href="{{social_url type="tiktok"}}" title="TikTok" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="tiktok"}}" title="TikTok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                     {{> "icons/tiktok"}}
                 </a>
             {{/if}}
             {{#if youtube}}
-                <a class="ec-author-social-link" href="{{social_url type="youtube"}}" title="YouTube" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="youtube"}}" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                     {{> "icons/youtube"}}
                 </a>
             {{/if}}
             {{#if instagram}}
-                <a class="ec-author-social-link" href="{{social_url type="instagram"}}" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <a class="ec-author-social-link" href="{{social_url type="instagram"}}" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                     {{> "icons/instagram"}}
                 </a>
             {{/if}}
