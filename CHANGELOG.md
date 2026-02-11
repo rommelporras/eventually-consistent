@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.6](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.6) - 2026-02-11
+
+Footer social links and mobile table fix.
+
+### Added
+- Threads social link in footer (hardcoded before GitHub and LinkedIn)
+
+### Fixed
+- Mobile table columns no longer squeeze to 1-3 characters — removed forced `white-space` override that prevented horizontal scroll
+
 ## [v1.1.5](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.5) - 2026-02-11
 
 Accessibility improvements and visual polish across all page templates.
