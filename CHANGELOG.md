@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.5](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.5) - 2026-02-11
+
+Accessibility improvements and visual polish across all page templates.
+
+### Added
+
+- Skip-to-content link with `.sr-only` focus styles for keyboard navigation
+- `id="site-main"` landmark on all page templates (index, post, page, tag, author, custom)
+- Visible `<h1>` on homepage (sr-only) for screen readers
+- `aria-label` on all social links in author template
+- Tag post count on tag archive pages using pagination data
+
+### Changed
+
+- Tag feature image: replace forced 2:1 aspect ratio with natural display, add border-radius and max-height cap
+- Restore post content width to 860px for better use of wide monitors
+- Remove max-width cap on TOC grid container
+
+### Fixed
+
+- Tag post count was empty — switched from unavailable `{{count.posts}}` to `{{plural ../pagination.total}}`
+- Mobile table cells inheriting `white-space: nowrap` from Ghost shared-theme-assets
+- Mobile code blocks too large — reduced font size
+- Feed titles not wrapping on mobile — added line clamping
+
 ## [v1.1.4](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.4) - 2026-02-11
 
 Fix mobile table scroll behavior — border and scroll-hint gradient now stay fixed at the container edge instead of scrolling with table content. Uses a two-div wrapper pattern (outer for border/gradient, inner for scroll).
