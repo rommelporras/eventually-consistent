@@ -166,7 +166,7 @@ docker compose -f docker-compose.dev.yml down -v
 
 | Environment | Internal URL | Public URL | Branch |
 |-------------|-------------|------------|--------|
-| Dev | blog-dev.k8s.home.rommelporras.com | — | `develop` |
+| Dev | blog.dev.k8s.rommelporras.com | — | `develop` |
 | Prod | blog.k8s.home.rommelporras.com | blog.rommelporras.com | `main` |
 
 ### CI/CD Pipeline
@@ -184,7 +184,7 @@ The pipeline:
 
 **Required GitLab CI/CD Variables (same key, scoped per environment):**
 ```
-GHOST_URL           [development] = https://blog-dev.k8s.home.rommelporras.com
+GHOST_URL           [development] = https://blog.dev.k8s.rommelporras.com
 GHOST_URL           [production]  = https://blog.k8s.home.rommelporras.com
 GHOST_ADMIN_API_KEY [development] = <id:secret from Ghost Admin Integration>
 GHOST_ADMIN_API_KEY [production]  = <id:secret from Ghost Admin Integration>

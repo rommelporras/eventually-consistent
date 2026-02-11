@@ -6,7 +6,7 @@
 #   GHOST_ADMIN_API_KEY - id:secret from Ghost Admin Integration (scoped per environment)
 #
 # Variable setup (same key, different environment scope):
-#   GHOST_URL           [development] = https://blog-dev.k8s.home.rommelporras.com
+#   GHOST_URL           [development] = https://blog.dev.k8s.rommelporras.com
 #   GHOST_URL           [production]  = https://blog.k8s.home.rommelporras.com
 #   GHOST_ADMIN_API_KEY [development] = <dev id:secret>
 #   GHOST_ADMIN_API_KEY [production]  = <prod id:secret>
@@ -117,7 +117,7 @@ deploy-dev:
     - build
   environment:
     name: development
-    url: https://blog-dev.k8s.home.rommelporras.com
+    url: https://blog.dev.k8s.rommelporras.com
 
 # Deploy to prod Ghost
 deploy-prod:
