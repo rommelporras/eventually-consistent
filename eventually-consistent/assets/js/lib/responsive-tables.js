@@ -9,11 +9,14 @@
         if (!tables.length) return;
 
         tables.forEach((table) => {
-            if (table.parentElement.classList.contains('ec-table-wrap')) return;
+            if (table.closest('.ec-table-outer')) return;
 
+            const outer = document.createElement('div');
+            outer.className = 'ec-table-outer';
             const wrapper = document.createElement('div');
             wrapper.className = 'ec-table-wrap';
-            table.parentNode.insertBefore(wrapper, table);
+            table.parentNode.insertBefore(outer, table);
+            outer.appendChild(wrapper);
             wrapper.appendChild(table);
         });
     }

@@ -367,9 +367,12 @@ pre {
    Tables - Improved Styling
    ============================================ */
 
-/* Override shared-theme-assets display: inline-block back to table */
+/* Override shared-theme-assets table defaults (must match :not(.gist table) specificity) */
 .gh-content table:not(.gist table) {
     display: table;
+    width: 100%;
+    max-width: none;
+    border-collapse: separate;
     background: none;
 }
 
@@ -380,14 +383,9 @@ pre {
 }
 
 .gh-content table {
-    width: 100%;
-    border-collapse: separate;
     border-spacing: 0;
     font-size: 1.4rem;
     margin: 2em 0;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    overflow: hidden;
 }
 
 .gh-content table thead {
@@ -428,25 +426,29 @@ pre {
     background-color: rgba(255, 255, 255, 0.02);
 }
 
-/* Table scroll wrapper (injected by JS) */
+/* Table scroll outer wrapper (injected by JS) */
+.ec-table-outer {
+    position: relative;
+    margin: 2em 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Table scroll inner wrapper (injected by JS) */
 .ec-table-wrap {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 2em 0;
 }
 
-.ec-table-wrap table {
+.ec-table-outer table {
     margin: 0;
 }
 
 /* Scroll hint gradient on mobile */
 @media (max-width: 767px) {
-    .ec-table-wrap {
-        position: relative;
-    }
-
-    .ec-table-wrap::after {
+    .ec-table-outer::after {
         content: '';
         position: absolute;
         top: 0;
@@ -456,6 +458,7 @@ pre {
         background: linear-gradient(to right, transparent, var(--white-color));
         pointer-events: none;
         opacity: 0.6;
+        z-index: 1;
     }
 
     .gh-content table {
