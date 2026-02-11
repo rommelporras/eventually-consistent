@@ -498,14 +498,9 @@ pre {
         font-size: 1.2rem;
     }
 
-    .gh-content table th {
-        padding: 8px 10px;
-        white-space: nowrap;
-    }
-
+    .gh-content table th,
     .gh-content table td {
         padding: 8px 10px;
-        white-space: normal;
     }
 
     /* Reduce code block font size on mobile */
