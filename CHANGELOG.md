@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.4](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.4) - 2026-02-11
+
+Fix mobile table scroll behavior — border and scroll-hint gradient now stay fixed at the container edge instead of scrolling with table content. Uses a two-div wrapper pattern (outer for border/gradient, inner for scroll).
+
+### Fixed
+
+- Table border and scroll-hint gradient no longer scroll with content on mobile — moved to outer wrapper that stays fixed
+- CSS specificity conflict with Ghost shared-theme-assets that caused tables to not fill full width on desktop
+
+### Changed
+
+- Update dev Ghost URL from `blog-dev.k8s.home.rommelporras.com` to `blog.dev.k8s.rommelporras.com` across CI/CD config and docs
+
 ## [v1.1.3](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.3) - 2026-02-07
 
 Fix Gulp 5 binary file corruption in theme zip. Gulp 5 changed `src()` default encoding from binary to UTF-8, corrupting font files during `gulp zip`. Adding `encoding: false` preserves binary files correctly.
