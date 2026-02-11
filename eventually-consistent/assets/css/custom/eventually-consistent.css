@@ -131,7 +131,7 @@ a:hover {
 
 /* Widen the post content container for wide screens */
 .single-content-wrap.gh-canvas {
-    --content-width: 720px;
+    --content-width: 860px;
     --container-width: 1400px;
     padding: 0 4vmin;
 }
@@ -147,7 +147,6 @@ a:hover {
     grid-template-columns: minmax(0, 1fr) 250px;
     gap: 48px;
     align-items: start;
-    max-width: 1020px;
 }
 
 .ec-toc-sidebar {
