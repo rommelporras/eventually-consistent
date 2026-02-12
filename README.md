@@ -14,6 +14,7 @@ A terminal-inspired, dark-mode-first theme built for writing about DevOps, homel
 - Terminal-style tagline with blinking cursor
 - Sticky header with backdrop blur and accent border
 - Featured articles carousel on homepage
+- AJAX "Load more" pagination (no full page reload)
 - Table of Contents sidebar (desktop) with collapsible mobile version
 - Terminal-style code block headers with language labels and copy button
 - Custom table styling with accent-colored headers and horizontal scroll on mobile
