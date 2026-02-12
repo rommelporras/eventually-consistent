@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.8](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.8) - 2026-02-12
+
+Accessible image alt text and documentation updates.
+
+### Fixed
+- Featured post carousel images now use `feature_image_alt` from Ghost API with fallback to post title
+
+### Changed
+- Update project README with missing features (TOC sidebar, code block headers, table styling, related posts, author page, accessibility)
+- Replace stale Dawn upstream README inside theme directory
+- Complete partials and icons listing in CLAUDE.md
+
 ## [v1.1.7](https://github.com/rommelporras/eventually-consistent/releases/tag/v1.1.7) - 2026-02-12
 
 Add path-based filtering to CI/CD pipeline to prevent redundant deployments.
