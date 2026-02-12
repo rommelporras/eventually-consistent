@@ -43,11 +43,18 @@ eventually-consistent/
     │   ├── featured-posts.hbs  # Featured articles carousel
     │   ├── loop.hbs       # Post listing loop
     │   ├── content.hbs    # Post content with prev/next nav
+    │   ├── related-posts.hbs   # "You might also like" / latest posts
+    │   ├── srcset.hbs     # Responsive image srcset helper
+    │   ├── comments.hbs   # Member discussion section
+    │   ├── content-cta.hbs    # Call-to-action for membership
+    │   ├── pagination.hbs # Page navigation
+    │   ├── pswp.hbs       # PhotoSwipe lightbox
     │   └── icons/         # SVG icon partials (Simple Icons)
     │       ├── github.hbs, linkedin.hbs, facebook.hbs, twitter.hbs
     │       ├── kubernetes.hbs, cloudflare.hbs, proxmox.hbs, opnsense.hbs
     │       ├── rss.hbs, search.hbs, arrow-left.hbs, arrow-right.hbs
-    │       └── ... (bluesky, instagram, mastodon, etc.)
+    │       ├── threads.hbs, bluesky.hbs, instagram.hbs, mastodon.hbs
+    │       └── youtube.hbs, tiktok.hbs, website.hbs, star.hbs, chevron-right.hbs
     │
     ├── assets/
     │   ├── css/

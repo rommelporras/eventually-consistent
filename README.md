@@ -14,9 +14,15 @@ A terminal-inspired, dark-mode-first theme built for writing about DevOps, homel
 - Terminal-style tagline with blinking cursor
 - Sticky header with backdrop blur and accent border
 - Featured articles carousel on homepage
+- Table of Contents sidebar (desktop) with collapsible mobile version
+- Terminal-style code block headers with language labels and copy button
+- Custom table styling with accent-colored headers and horizontal scroll on mobile
+- Related posts section ("You might also like")
+- Author page with cover banner, avatar, bio, and social links
 - Custom 4-column footer with tech stack icons
 - Official brand SVGs via [Simple Icons](https://simpleicons.org/)
 - Custom post templates (full-width, narrow, no feature image)
+- Skip-to-content link and accessible image alt text
 - Responsive mobile-first design
 - Ghost 5.x / 6.x compatible
 
