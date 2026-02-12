@@ -22,7 +22,7 @@
     ],
     "docs": "https://blog.rommelporras.com/about/",
     "config": {
-        "posts_per_page": 5,
+        "posts_per_page": 25,
         "image_sizes": {
             "xs": {
                 "width": 150
