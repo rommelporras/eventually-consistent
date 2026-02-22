@@ -72,6 +72,10 @@ docker compose -f docker-compose.dev.yml down
 docker compose -f docker-compose.dev.yml down -v
 ```
 
+## Claude Code
+
+This project uses [Claude Code](https://claude.ai/code) with a shared global config — see [rommelporras/claude-config](https://github.com/rommelporras/claude-config) for setup instructions before working on a new machine.
+
 ## Deployment
 
 This theme is deployed to a self-hosted Ghost instance on Kubernetes via a GitLab CI/CD pipeline. The pipeline validates the theme with `gscan`, builds a zip, and uploads it to Ghost via the [Admin API](https://ghost.org/docs/admin-api/).

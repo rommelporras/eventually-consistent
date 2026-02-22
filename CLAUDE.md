@@ -19,8 +19,6 @@ eventually-consistent/
 │
 ├── .claude/               # Claude Code configuration (gitignored)
 │   ├── commands/
-│   │   ├── commit.md      # /commit — conventional commit
-│   │   ├── push.md        # /push — push to both remotes
 │   │   └── release.md     # /release — GitFlow release workflow
 │   ├── hooks/
 │   │   └── protect-sensitive.sh  # Security hook
@@ -102,11 +100,11 @@ Always push to both remotes to keep them in sync.
 
 ### Slash Commands
 
-| Command | What it does |
-|---------|-------------|
-| `/commit` | Analyze changes, generate conventional commit message, commit locally |
-| `/push` | Push current branch to both `origin` and `github` |
-| `/release` | Full GitFlow release: merge develop→main, tag, push, create GitHub release |
+| Command | Where defined | What it does |
+|---------|--------------|-------------|
+| `/commit` | global skill | Conventional commit with secret scan and branch safety check |
+| `/push` | global skill | Push current branch to all configured remotes |
+| `/release` | project command | Full GitFlow release: merge develop→main, tag, push, create GitHub + GitLab releases |
 
 Typical workflow:
 ```
