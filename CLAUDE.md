@@ -278,8 +278,6 @@ The CI/CD pipeline handles this automatically.
 
 ## Rules
 
-- **NO AI attribution** in commits - Do not include "Generated with Claude Code", "Co-Authored-By: Claude", or any AI-related attribution in commit messages, PR descriptions, or code comments.
-- **NO automatic git commits or pushes** - Do not run `git commit` or `git push` unless explicitly requested by the user or invoked via `/commit`, `/push`, or `/release` commands.
 - **GitFlow discipline** - Never commit directly to `main`. All work goes through `develop`. Releases merge develop→main via fast-forward only.
 - **Push to both remotes** - Always push to `origin` (GitLab) AND `github` (GitHub). Use `/push` to handle this automatically.
 - **Test locally first** - Always verify changes work locally before pushing
